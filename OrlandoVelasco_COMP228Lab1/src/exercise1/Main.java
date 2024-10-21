@@ -1,3 +1,5 @@
+package exercise1;
+
 import java.time.LocalDate;
 
 public class Main {
