@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Specifies the XML version and character encoding for this file. -->
+
+<!-- Import JavaFX control elements for the UI components used in the FXML layout -->
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TextArea?>
+
+<!-- Define the root container VBox for vertical alignment -->
+<VBox xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="com.opsdevelop.orlandovelasco_comp228lab4.HelloController" spacing="10" alignment="TOP_LEFT" style="-fx-padding: 10;">
+
+    <!-- HBox to contain two GridPanes side-by-side for layout organization -->
+    <HBox spacing="0" alignment="TOP_LEFT">
+
+        <!-- First GridPane with 5 columns for labels, input fields and checkboxes -->
+        <GridPane hgap="2" vgap="10" alignment="TOP_LEFT" style="-fx-padding: 0;" HBox.hgrow="ALWAYS">
+
+            <!-- Define width of each column as a percentage-->
+            <columnConstraints>
+                <ColumnConstraints percentWidth="10"/>
+                <ColumnConstraints percentWidth="15"/>
+                <ColumnConstraints percentWidth="45"/>
+                <ColumnConstraints percentWidth="1"/>
+                <ColumnConstraints percentWidth="29"/>
+            </columnConstraints>
+
+            <!-- Labels and input fields for user information -->
+           <Label text="Name:" style="-fx-font-weight: bold;" GridPane.rowIndex="0" GridPane.columnIndex="0" />
+           <TextField fx:id="nameField" promptText="Name" GridPane.rowIndex="0" GridPane.columnIndex="2"/>
+           <Label text="Address:" style="-fx-font-weight: bold;" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+           <TextField fx:id="addressField" promptText="Address" GridPane.rowIndex="1" GridPane.columnIndex="2"/>
+           <Label text="Province:"  style="-fx-font-weight: bold;" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+           <TextField fx:id="provinceField" promptText="Province" GridPane.rowIndex="2" GridPane.columnIndex="2"/>
+           <Label text="City:" style="-fx-font-weight: bold;" GridPane.rowIndex="3" GridPane.columnIndex="0"/>
+           <TextField fx:id="cityField" promptText="City" GridPane.rowIndex="3" GridPane.columnIndex="2"/>
+           <Label text="Postal Code:" style="-fx-font-weight: bold;" GridPane.rowIndex="4" GridPane.columnIndex="0"/>
+           <TextField fx:id="postalCodeField" promptText="Postal Code" GridPane.rowIndex="4" GridPane.columnIndex="2"/>
+           <Label text="Phone Number:" style="-fx-font-weight: bold;" GridPane.rowIndex="5" GridPane.columnIndex="0"/>
+           <TextField fx:id="phoneNumberField" promptText="Phone Number" GridPane.rowIndex="5" GridPane.columnIndex="2"/>
+           <Label text="Email:" style="-fx-font-weight: bold;" GridPane.rowIndex="6" GridPane.columnIndex="0"/>
+           <TextField fx:id="emailField" promptText="Email" GridPane.rowIndex="6" GridPane.columnIndex="2"/>
+
+           <!-- CheckBoxes for additional activities -->
+            <CheckBox fx:id="studentCouncilCheckBox" text="Student Council" style="-fx-font-weight: bold;" GridPane.rowIndex="1" GridPane.columnIndex="4"/>
+            <CheckBox fx:id="volunteerWorkCheckBox" text="Volunteer Work" style="-fx-font-weight: bold;" GridPane.rowIndex="5" GridPane.columnIndex="4"/>
+
+        </GridPane>
+
+        <!-- Second GridPane to contain program-specific options (e.g., RadioButtons, ComboBox, and ListView) -->
+        <GridPane vgap="10"  alignment="TOP_RIGHT" style="-fx-padding: 0;" >
+            <columnConstraints>
+                <ColumnConstraints percentWidth="100"/>
+            </columnConstraints>
+
+            <!-- Nested GridPane for radio buttons for major selection (Computer Science or Business) -->
+            <GridPane GridPane.rowIndex="0" GridPane.columnIndex="0" hgap="30" HBox.hgrow="ALWAYS">
+                <RadioButton  fx:id="computerScienceRadioButton"  text="Computer Science" style="-fx-font-weight: bold;" GridPane.columnIndex="0">
+                    <toggleGroup>
+                        <ToggleGroup fx:id="toggleGroup" />
+                    </toggleGroup>
+                </RadioButton>
+
+                <RadioButton fx:id="businessRadioButton"  text="Business" style="-fx-font-weight: bold;" GridPane.columnIndex="1" toggleGroup="$toggleGroup"/>
+            </GridPane>
+
+            <!-- ComboBox for selecting from a list of courses -->
+            <ComboBox fx:id="coursesComboBox" promptText="List of courses" style="-fx-font-weight: bold;"
+                      GridPane.rowIndex="2" GridPane.columnIndex="0" prefWidth="250" prefHeight="50"/>
+
+            <!-- ListView for displaying selected courses -->
+            <ListView fx:id="coursesListView" style="-fx-font-weight: bold;"
+                      GridPane.rowIndex="3" GridPane.columnIndex="0" prefWidth="150" prefHeight="150"/>
+        </GridPane>
+
+    </HBox>
+
+
+    <!-- Centered HBox containing the 'Display' button with an action event handler -->
+    <HBox alignment="CENTER" style="-fx-padding: 10;">
+        <Button fx:id="displayButton" text="Display" style="-fx-font-weight: bold;" onAction="#onDisplayButtonClick"/>
+    </HBox>
+
+    <!-- TextArea to display messages at the bottom of the layout -->
+    <TextArea fx:id="messageTextArea" GridPane.rowIndex="3" GridPane.columnIndex="0" GridPane.columnSpan="3"
+              style="-fx-font-size: 14px" prefHeight="100" />
+</VBox>
