@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+    File Name: hello-view.fxml
+    Description: A JavaFX layout file that defines the UI structure for player registration, game registration,
+                 score registration, player information update, and display tabs.
+    Student's Name: Orlando Velasco Rios
+    Student ID: 301368612
+    Date: November 30, 2024
+-->
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+
+<TabPane xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.171"
+         fx:controller="com.opsdevelop.orlandovelasco_comp228lab5.HelloController">
+    <!-- Register Player Tab -->
+    <Tab text="Register Player's Information">
+        <VBox alignment="CENTER" spacing="20.0">
+
+            <padding>
+                <Insets left="200" right="200"  top="0.0"/>
+            </padding>
+
+
+            <GridPane alignment="TOP_CENTER" >
+                <Label text="Player's Information:" style="-fx-font-weight: bold;" GridPane.rowIndex="0" GridPane.columnIndex="0" />
+            </GridPane>
+
+            <GridPane hgap="2" vgap="10" alignment="TOP_LEFT" >
+
+                <!-- Define width of each column as a percentage-->
+                <columnConstraints>
+                    <ColumnConstraints percentWidth="20"/>
+                    <ColumnConstraints percentWidth="80"/>
+                </columnConstraints>
+
+                <Label text="First Name:" style="-fx-font-weight: bold;" GridPane.rowIndex="0" GridPane.columnIndex="0" />
+                <TextField fx:id="registerFirstNameField" promptText="Enter First Name" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+                <Label text="Last Name:" style="-fx-font-weight: bold;" GridPane.rowIndex="1" GridPane.columnIndex="0" />
+                <TextField fx:id="registerLastNameField" promptText="Enter Last Name" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+                <Label text="Address:" style="-fx-font-weight: bold;" GridPane.rowIndex="2" GridPane.columnIndex="0" />
+                <TextField fx:id="registerAddressField" promptText="Enter Address" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+                <Label text="Postal Code:" style="-fx-font-weight: bold;" GridPane.rowIndex="3" GridPane.columnIndex="0" />
+                <TextField fx:id="registerPostalCodeField" promptText="Enter Postal Code" GridPane.rowIndex="3" GridPane.columnIndex="1"/>
+                <Label text="Province:" style="-fx-font-weight: bold;" GridPane.rowIndex="4" GridPane.columnIndex="0" />
+                <TextField fx:id="registerProvinceField" promptText="Enter Province" GridPane.rowIndex="4" GridPane.columnIndex="1"/>
+                <Label text="Phone Number:" style="-fx-font-weight: bold;" GridPane.rowIndex="5" GridPane.columnIndex="0" />
+                <TextField fx:id="registerPhoneNumberField" promptText="Enter Phone Number" GridPane.rowIndex="5" GridPane.columnIndex="1"/>
+            </GridPane>
+
+            <HBox spacing="10" alignment="CENTER">
+                <Button text="Submit" onAction="#onSubmitRegisterPlayer"/>
+                <Button text="Clear" onAction="#onClearRegisterPlayer"/>
+            </HBox>
+        </VBox>
+    </Tab>
+
+    <!-- Register Game Tab -->
+    <Tab text="Register Game's Information">
+        <VBox alignment="CENTER" spacing="20.0">
+
+            <padding>
+                <Insets left="200" right="200"  top="0.0"/>
+            </padding>
+
+            <GridPane alignment="TOP_CENTER" >
+                <Label text="Game's Information:" style="-fx-font-weight: bold;" GridPane.rowIndex="0" GridPane.columnIndex="0" />
+            </GridPane>
+
+            <GridPane hgap="2" vgap="10" alignment="TOP_LEFT" >
+
+                <!-- Define width of each column as a percentage-->
+                <columnConstraints>
+                    <ColumnConstraints percentWidth="20"/>
+                    <ColumnConstraints percentWidth="80"/>
+                </columnConstraints>
+
+                <Label text="Title:" style="-fx-font-weight: bold;" GridPane.rowIndex="0" GridPane.columnIndex="0" />
+                <TextField fx:id="titleField" promptText="Enter Game's title" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+            </GridPane>
+
+            <HBox spacing="10" alignment="CENTER">
+                <Button text="Submit" onAction="#onSubmitRegisterGame"/>
+                <Button text="Clear" onAction="#onClearRegisterGame"/>
+            </HBox>
+        </VBox>
+    </Tab>
+
+
+    <!-- Register score Tab -->
+    <Tab text="Register Score">
+        <VBox spacing="20" alignment="CENTER">
+            <padding>
+                <Insets left="200" right="200"  top="0.0"/>
+            </padding>
+            <HBox spacing="10" alignment="CENTER">
+                <Label text="Select Player ID:" />
+                <ComboBox fx:id="playerIdScoreComboBox" onAction="#onPlayerSelection" />
+            </HBox>
+            <HBox spacing="10" alignment="CENTER">
+                <Label text="Select Game ID:" />
+                <ComboBox fx:id="gameIdScoreComboBox" onAction="#onGameSelection" />
+            </HBox>
+
+            <Separator />
+
+            <GridPane alignment="TOP_CENTER" >
+                <Label text="Games' Score" style="-fx-font-weight: bold;" GridPane.rowIndex="0" GridPane.columnIndex="0" />
+            </GridPane>
+
+            <GridPane hgap="2" vgap="10" alignment="TOP_LEFT" >
+
+                <!-- Define width of each column as a percentage-->
+                <columnConstraints>
+                    <ColumnConstraints percentWidth="20"/>
+                    <ColumnConstraints percentWidth="80"/>
+                </columnConstraints>
+
+                <Label text="Playing Date:" style="-fx-font-weight: bold;" GridPane.rowIndex="1" GridPane.columnIndex="0" />
+                <DatePicker fx:id="playingDatePicker" promptText="Select Playing Date" GridPane.rowIndex="1" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" />
+                <Label text="Score:" style="-fx-font-weight: bold;" GridPane.rowIndex="2" GridPane.columnIndex="0" />
+                <TextField fx:id="scoreField" promptText="Enter Score" GridPane.rowIndex="2" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS"/>
+            </GridPane>
+
+            <HBox spacing="10" alignment="CENTER">
+                <Button text="Submit" onAction="#onSubmitScore"/>
+                <Button text="Clear" onAction="#onClearScore"/>
+            </HBox>
+        </VBox>
+    </Tab>
+
+    <!-- Update Tab -->
+    <Tab text="Update Player's Information">
+        <VBox spacing="20" alignment="CENTER">
+            <padding>
+                <Insets left="200" right="200"  top="0.0"/>
+            </padding>
+            <HBox spacing="10" alignment="CENTER">
+                <Label text="Select Player ID:" />
+                <ComboBox fx:id="playerIdUpdatePlayerComboBox" onAction="#onPlayerSelection" />
+            </HBox>
+            <Separator />
+            <GridPane alignment="TOP_CENTER" >
+                <Label text="Player's Information:" style="-fx-font-weight: bold;" GridPane.rowIndex="0" GridPane.columnIndex="0" />
+            </GridPane>
+
+            <GridPane hgap="2" vgap="10" alignment="TOP_LEFT" >
+
+                <!-- Define width of each column as a percentage-->
+                <columnConstraints>
+                    <ColumnConstraints percentWidth="20"/>
+                    <ColumnConstraints percentWidth="80"/>
+                </columnConstraints>
+
+                <Label text="First Name:" style="-fx-font-weight: bold;" GridPane.rowIndex="0" GridPane.columnIndex="0" />
+                <TextField fx:id="updateFirstNameField" promptText="Enter First Name" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+                <Label text="Last Name:" style="-fx-font-weight: bold;" GridPane.rowIndex="1" GridPane.columnIndex="0" />
+                <TextField fx:id="updateLastNameField" promptText="Enter Last Name" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+                <Label text="Address:" style="-fx-font-weight: bold;" GridPane.rowIndex="2" GridPane.columnIndex="0" />
+                <TextField fx:id="updateAddressField" promptText="Enter Address" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+                <Label text="Postal Code:" style="-fx-font-weight: bold;" GridPane.rowIndex="3" GridPane.columnIndex="0" />
+                <TextField fx:id="updatePostalCodeField" promptText="Enter Postal Code" GridPane.rowIndex="3" GridPane.columnIndex="1"/>
+                <Label text="Province:" style="-fx-font-weight: bold;" GridPane.rowIndex="4" GridPane.columnIndex="0" />
+                <TextField fx:id="updateProvinceField" promptText="Enter Province" GridPane.rowIndex="4" GridPane.columnIndex="1"/>
+                <Label text="Phone Number:" style="-fx-font-weight: bold;" GridPane.rowIndex="5" GridPane.columnIndex="0" />
+                <TextField fx:id="updatePhoneNumberField" promptText="Enter Phone Number" GridPane.rowIndex="5" GridPane.columnIndex="1"/>
+            </GridPane>
+
+            <HBox spacing="10" alignment="CENTER">
+                <Button text="Update" onAction="#onUpdatePlayer"/>
+                <Button text="Clear" onAction="#onClearUpdatePlayer"/>
+            </HBox>
+        </VBox>
+    </Tab>
+
+    <!-- Display Tab -->
+    <Tab text="Display Information" onSelectionChanged="#onDisplayInformationTabSelected">
+        <VBox spacing="20" alignment="CENTER">
+            <HBox spacing="10">
+                <Label text="Filter by Player ID:" />
+                <TextField fx:id="filterPlayerIdField" promptText="Enter Player ID" />
+                <Button text="Filter" onAction="#onFilterPlayer" />
+                <Button text="Restart" onAction="#onFilterRestart" />
+            </HBox>
+            <TableView fx:id="playerTable">
+                <columns>
+                    <TableColumn text="Player ID" fx:id="playerIdColumn" />
+                    <TableColumn text="First Name" fx:id="firstNameColumn" prefWidth="140"/>
+                    <TableColumn text="Last Name" fx:id="lastNameColumn" prefWidth="140" />
+                    <TableColumn text="Address" fx:id="addressColumn" prefWidth="200"/>
+                    <TableColumn text="Postal Code" fx:id="postalCodeColumn" />
+                    <TableColumn text="Province" fx:id="provinceColumn" />
+                    <TableColumn text="Phone Number" fx:id="phoneNumberColumn" prefWidth="150" />
+                </columns>
+            </TableView>
+            <TableView fx:id="gameTable">
+                <columns>
+                    <TableColumn text="Game Title" fx:id="gameTitleColumn" prefWidth="150" />
+                    <TableColumn text="Playing Date" fx:id="playingDateColumn" />
+                    <TableColumn text="Score" fx:id="scoreColumn" />
+                </columns>
+            </TableView>
+        </VBox>
+    </Tab>
+</TabPane>
