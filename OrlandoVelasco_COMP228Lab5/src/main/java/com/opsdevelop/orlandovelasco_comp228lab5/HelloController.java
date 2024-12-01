@@ -217,7 +217,6 @@ public class HelloController {
 
     // Extracts the player ID from the ComboBox selection
     private int extractPlayerIdFromComboBox(String selectedPlayer) {
-        // Example input: "123 - John Doe"
         String[] parts = selectedPlayer.split(" - ");
         String playerIdString = parts[0].trim();
         return Integer.parseInt(playerIdString);  // Converts the ID to an integer
@@ -291,47 +290,13 @@ public class HelloController {
         titleField.clear();
     }
 
-    // Handles the selection of a game from the ComboBox
-    @FXML
-    private void onGameSelection(ActionEvent event) {
-        ComboBox<String> source = (ComboBox<String>) event.getSource();
-        String selectedGame= source.getValue();
-
-        if (selectedGame != null) {
-            String[] parts = selectedGame.split(" - ");
-            int gameId = Integer.parseInt(parts[0]);
-            populateGameDetails(gameId, source);
-        }
-    }
 
     // Extracts the game ID from the ComboBox selection string
     private int extractGameIdFromComboBox(String selectedGame) {
-        // Example input: "123 - John Doe"
         String[] parts = selectedGame.split(" - ");
         String gameIdString = parts[0].trim();
         return Integer.parseInt(gameIdString);  // Converts the ID to an integer
     }
-
-    // Populates game details into appropriate fields based on the selected game ID
-    private void populateGameDetails(int gameId, ComboBox<String> sourceComboBox) {
-        try {
-            String query = "SELECT * FROM Orlando_Velasco_Rios_game WHERE game_id = ?";
-            PreparedStatement stmt = dbConnection.prepareStatement(query);
-            stmt.setInt(1, gameId);
-            ResultSet rs = stmt.executeQuery();
-
-            // Fill the fields if data is found
-            if (rs.next()) {
-                if (sourceComboBox == gameIdScoreComboBox) {
-                    titleField.setText(rs.getString("game_title"));
-                }
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-            showError("SQL Error in loading player details: " + e.getMessage());
-        }
-    }
-
 
     // Handles the submission of a score entry for a player and game
     @FXML

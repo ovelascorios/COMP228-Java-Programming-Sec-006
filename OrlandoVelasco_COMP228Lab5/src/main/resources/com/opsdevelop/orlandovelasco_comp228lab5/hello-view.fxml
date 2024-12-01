@@ -98,11 +98,11 @@
             </padding>
             <HBox spacing="10" alignment="CENTER">
                 <Label text="Select Player ID:" />
-                <ComboBox fx:id="playerIdScoreComboBox" onAction="#onPlayerSelection" />
+                <ComboBox fx:id="playerIdScoreComboBox" promptText="Please select ..."  />
             </HBox>
             <HBox spacing="10" alignment="CENTER">
                 <Label text="Select Game ID:" />
-                <ComboBox fx:id="gameIdScoreComboBox" onAction="#onGameSelection" />
+                <ComboBox fx:id="gameIdScoreComboBox" promptText="Please select ..."  />
             </HBox>
 
             <Separator />
@@ -140,7 +140,7 @@
             </padding>
             <HBox spacing="10" alignment="CENTER">
                 <Label text="Select Player ID:" />
-                <ComboBox fx:id="playerIdUpdatePlayerComboBox" onAction="#onPlayerSelection" />
+                <ComboBox fx:id="playerIdUpdatePlayerComboBox" promptText="Please select ..."  onAction="#onPlayerSelection" />
             </HBox>
             <Separator />
             <GridPane alignment="TOP_CENTER" >
